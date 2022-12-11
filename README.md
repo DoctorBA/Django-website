@@ -23,3 +23,15 @@ b) Added reset password form.
 
     v1.3.2. HomeWork 30.11.2022:
 a) Added url registration page.
+
+    v1.4.1. Lesson 05.12.2022:
+a) Added registration User
+b) Added books display
+
+    v1.5.1. Lesson 07.12.2022:
+a) Added catalog of authors
+b) Added filter authors
+
+    v1.5.2. HomeWork 07.12.2022:
+a) Added author filter in "book" cards
+
