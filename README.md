@@ -9,9 +9,17 @@ b) Create a 'Cart' app. Add a Cart model.
 c) Create a migration and apply it.
 
     v1.2.1. Lesson 28.11.2022 update:
-a) Add app accounts
-b) Added file html
+a) Add app accounts.
+b) Added file html.
 
     v1.2.2. HomeWork 28.11.2022:
 a) More "book" added.
 b) Main page changed.
+
+    v1.3.1. Lesson 30.11.2022:
+a) Added authorization form.
+b) Added reset password form.
+с) Added registration form.
+
+    v1.3.2. HomeWork 30.11.2022:
+a) Added url registration page.
