@@ -30,7 +30,7 @@
     </a><div class="navbar navbar-dark bg-dark shadow-sm"><a href="#" class="text-white">
       </a><div class="container"><a href="#" class="text-white">
         </a><a href="#" class="navbar-brand d-flex align-items-center">
-          <strong>{% if author %} {{ author.last_name }}'s Catalog {% else %} Books Catalog{% endif %}</strong>
+          <strong>{% if author %} {{ author.last_name }}'s Catalog {% elif genre %} {{ genre }}'s Catalog {% else %} Books Catalog{% endif %}</strong>
         </a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Переключить навигацию">
           <span class="navbar-toggler-icon"></span>
@@ -44,12 +44,7 @@
         {% for book in books %}
           <div class="col">
             <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="30%"
-                height="500px" xmlns="http://www.w3.org/2000/svg" role="img"
-                aria-label="Placeholder: Эскиз" preserveAspectRatio="xMidYMid slice"
-                focusable="false"><title>Placeholder</title><rect width="100%"
-                height="100%" fill="#55595c"></rect><text x="50%" y="50%"
-                fill="#eceeef" dy=".3em">Эскиз</text></svg>   
+              <img src="{{ book.image.url }}" width="100%" height="320px"> 
 
               <div class="card-body">
                   <p class="card-text">Title: {{book.title}}</p>
