@@ -38,8 +38,8 @@ a) Added author filter in "book" cards
     v1.6.1. Lesson 12.12.2022:
 a) Added catalog of genres
 b) Added filter genres
-с) Added image authors, books, genres
+с) Added placeholder authors, books, genres
 
     v1.6.2. HomeWork 12.12.2022:
-a) 
+a) Added image authors, books, genres
 
