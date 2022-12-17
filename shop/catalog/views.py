@@ -53,3 +53,16 @@ class GenreView(TemplateView):
         genre = Genre.objects.get(name=name)
         books = Book.objects.filter(genre=genre)
         return render(request, self.template_name, {'genre':genre, 'books':books})    
+    
+class SearchView(TemplateView):
+    template_name = 'catalog/index.html'
+    
+    def post(self, request):
+        content = request.POST['content']
+        
+        #books_by_author = Book.objects.filter(author=content)
+        books_by_title = Book.objects.filter(title__icontains=content)
+        books_by_summary = Book.objects.filter(summary__icontains=content)
+        #books_by_author= Book.objects.filter(author=search_author)
+        result = books_by_title.union(books_by_summary, all=False)
+        return render(request, self.template_name, {'books': result})

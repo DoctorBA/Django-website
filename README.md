@@ -43,3 +43,7 @@ b) Added filter genres
     v1.6.2. HomeWork 12.12.2022:
 a) Added image authors, books, genres
 
+    v1.7.1. Lesson 14.12.2022:
+a) Added search books
+b) Update model 'Cart'
+

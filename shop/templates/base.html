@@ -20,6 +20,11 @@
               <li><a href="{% url 'catalog-authors' %}" class="nav-link px-2 text-white">Authors</a></li>
               <li><a href="{% url 'catalog-genres' %}" class="nav-link px-2 text-white">Genres</a></li>
             </ul>
+            <form class="d-flex" action="{% url 'catalog-search' %}" method="post">
+              {% csrf_token %}
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="content">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
     
             <div class="text-end">
               {% if user.is_authenticated %}

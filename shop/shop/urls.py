@@ -9,5 +9,4 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
     path('', include('catalog.urls')),
-    path('cart/', include('cart.urls'))
 ] #+ static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
