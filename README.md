@@ -47,3 +47,5 @@ a) Added image authors, books, genres
 a) Added search books
 b) Update model 'Cart'
 
+    v1.8.1. Lesson 19.12.2022:
+a) Shopping cart added

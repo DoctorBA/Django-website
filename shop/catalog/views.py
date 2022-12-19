@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Book
 from .models import Author, Genre
+from cart.cart import get_cart
 
 
 class IndexView(TemplateView):
@@ -11,8 +12,9 @@ class IndexView(TemplateView):
         books = Book.objects.all()
         numb = books.count()
         authors = Author.objects.all().count()
+        params = get_cart(request, {'books': books, 'numb': numb, 'authors': authors})
         
-        return render(request, self.template_name, {'books': books, 'numb': numb, 'authors': authors})
+        return render(request, self.template_name, params)
 
 
 class AuthorsView(TemplateView):
@@ -20,14 +22,16 @@ class AuthorsView(TemplateView):
     
     def get(self, request):
         authors = Author.objects.all()
-        return render(request, self.template_name, {'authors': authors})
+        params = get_cart(request, {'authors': authors})
+        return render(request, self.template_name, params)
 
 class BookView(TemplateView):
     template_name = 'catalog/book.html'
     
     def get(self, request, id):
         book = Book.objects.get(id=id)
-        return render(request, self.template_name, {'book': book})
+        params = get_cart(request, {'book': book})
+        return render(request, self.template_name, params)
     
 
 class AuthorView(TemplateView):
@@ -36,7 +40,8 @@ class AuthorView(TemplateView):
     def get(self, request, first_name, last_name):
         author = Author.objects.get(first_name=first_name, last_name=last_name)
         books = Book.objects.filter(author=author)
-        return render(request, self.template_name, {'author':author, 'books': books})
+        params = get_cart(request, {'author':author, 'books': books})
+        return render(request, self.template_name, params)
          
         
 class GenresView(TemplateView):
@@ -44,7 +49,8 @@ class GenresView(TemplateView):
     
     def get(self, request):
         genres = Genre.objects.all()
-        return render(request, self.template_name, {'genres':genres})        
+        params = get_cart(request, {'genres':genres})
+        return render(request, self.template_name, params)        
     
 class GenreView(TemplateView):
     template_name = 'catalog/index.html'
@@ -52,7 +58,8 @@ class GenreView(TemplateView):
     def get(self, request, name):
         genre = Genre.objects.get(name=name)
         books = Book.objects.filter(genre=genre)
-        return render(request, self.template_name, {'genre':genre, 'books':books})    
+        params = get_cart(request, {'genre':genre, 'books':books})
+        return render(request, self.template_name, params)    
     
 class SearchView(TemplateView):
     template_name = 'catalog/index.html'
@@ -65,4 +72,5 @@ class SearchView(TemplateView):
         books_by_summary = Book.objects.filter(summary__icontains=content)
         #books_by_author= Book.objects.filter(author=search_author)
         result = books_by_title.union(books_by_summary, all=False)
-        return render(request, self.template_name, {'books': result})
+        params = get_cart(request, {'books': result})
+        return render(request, self.template_name, params)
