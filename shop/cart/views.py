@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
 
-class CartView(TemplateView):
+class CartAddView(TemplateView):
     
     @method_decorator(login_required)
     def get(self, request, id):
@@ -15,3 +15,21 @@ class CartView(TemplateView):
         cart.products.add(book)
         
         return redirect('catalog-index')
+    
+class CartDelView(TemplateView):
+    
+    @method_decorator(login_required)
+    def get(self, request, id):
+        cart = Cart.objects.get(user=request.user)
+        cart.products.set(cart.products.exclude(id=id))
+        
+        return redirect('catalog-index')
+    
+class CartDelAllView(TemplateView):
+    
+    @method_decorator(login_required)
+    def get(self, request):
+        Cart.objects.get(user=request.user).products.set(list())
+    
+        return redirect('catalog-index')
+    
