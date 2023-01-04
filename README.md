@@ -49,3 +49,8 @@ b) Update model 'Cart'
 
     v1.8.1. Lesson 19.12.2022:
 a) Shopping cart added
+
+    v1.8.2. HomeWork 19.12.2022:
+a) Added "Total price" in cart 
+b) Added title in search "Not founds"
+c) Added delete in carts 

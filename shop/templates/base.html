@@ -34,14 +34,26 @@
                       {% for book in cart.products.all %}
                       <tr>
                         <td style="vertical-align:middle">{{ book.title }}</td>
-                        <td style="vertical-align:middle">{{ book.price }}</td>
-                        <td><img src="{{ book.image.url }}" width="100%" height="40px"></td>
+                        <td style="vertical-align:middle">{{ book.price }}$</td>
+                        <td style="vertical-align:middle"><img src="{{ book.image.url }}" width="40px" height="40px"></td>
+                        <td style="vertical-align:middle">
+                          <a type="button" href="{{ book.del_to_cart }}"
+                           class="btn btn-danger center px-1">Delete</a>
+                        </td>
                       </tr>
                       {% endfor %}
                     </tbody>
                   </table>
-                  <a type="button" class="btn btn-primary center" href="#"
-                  style="display: flex; justify-content: center;">Buy</a>                  
+                  
+                  {% if cart.products.all %}
+                    <h5><b>Total: {{ cart.get_total_price }} $</b></h5>
+                    <a type="button" class="btn btn-primary center" href="#"
+                    style="display: flex; justify-content: center;">Buy</a>
+                    <a type="button" class="btn btn-danger center" href="{% url 'cart-del_all' %}"
+                    style="display: flex; justify-content: center;">Delete all</a>
+                  {% else %}
+                    <h6>Cart is empty</h6>   
+                  {% endif %}                 
                 </div>
              </div>
 
